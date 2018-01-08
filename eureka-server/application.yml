@@ -1,13 +1,12 @@
 server:
   port: 8761
+  context-path: /eureka-server
 
 spring:
   application:
-    name: eureka-server-test
+    name: eureka-server
   
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost：8762/eureka/
     healthcheck:
       enabled: true

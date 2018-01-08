@@ -1,6 +1,0 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://35.201.207.54：8762/eureka/
-    healthcheck:
-      enabled: true

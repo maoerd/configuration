@@ -1,0 +1,4 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://35.185.131.60：8761/eureka-server/eureka/
