@@ -1,25 +1,23 @@
-# Maoerd Cloud Config Server
-# Support features:
-# 1. Clone repo on server startup to avoid invalid repo uri issue
-# 2. Force pull repo's change to void local clone dirty issue
-# 3. Search configurations by application name in per repo to support multi appliations
-# 4. Monitor remote repo's change
-# 5. Publish remote repo's change event to client
-#
-# 6. Register itself into eureka server as a service
-# 7. Don't discovery other services
-#
-# In primary config-server, we specify the eureka server here: http://35.201.207.54:8761/eureka-server/eureka/
-#
-# Please be aware of that we don't have region && zone configurations for the config server.
-# Because of the discovery client is disabled due to no need to discover other services
-# 
-# Config server only register itself into different eureka server which locales in different zones
-# 
+server:
+  context-path: /config-server
+  port: 8888
+  
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/maoerd/configuration
+          cloneOnStart: true
+          force-pull: true
+          searchPaths: '{application}'
+
 eureka:
   client:
-    enabled: false
+    enabled: true
+    registerWithEureka: true
+    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://35.201.207.54:8761/eureka-server/eureka/
-  
-
+      defaultZone: http://35.185.131.60:8761/eureka-server/eureka/
