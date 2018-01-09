@@ -20,4 +20,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://35.185.131.60:8761/eureka-server/eureka/
+      defaultZone: http://primary-eureka-server:8761/eureka-server/eureka/
