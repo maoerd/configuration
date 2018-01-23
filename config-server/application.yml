@@ -1,0 +1,36 @@
+# Spring Cloud Config Server
+#
+# Enabled features:
+# 1. Clone repo on server startup to avoid invalid repo uri issue
+# 2. Force pull repo's change to void local clone dirty issue
+# 3. Search configurations by application name in per repo to support multi appliations
+#
+# Disabled features:
+# 1. Eureka client (Developers should to explict enable it when they want to register this service to eureka server)
+# 2. Spring Cloud Bus(Developers should to explict enable it when they want to monitor and handle configurations change automatically)
+# 
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/maoerd/configuration
+          cloneOnStart: true
+          force-pull: true
+          searchPaths: '{application}'
+    stream:
+      defaultBinder: kafka
+    bus:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
+
+server:
+  port: 8888
+ 
+  
+
